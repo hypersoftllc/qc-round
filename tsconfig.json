@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "module": "commonjs",
+    "newLine": "CRLF",
+    "noImplicitAny": true,
+    "outDir": "./dist/",
+    "pretty": true,
+    "target": "es3"
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}
