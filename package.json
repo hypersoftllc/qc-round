@@ -1,6 +1,6 @@
 {
   "name": "qc-round",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "Danny Hurlburt",
     "url": "https://github.com/dhurlburtusa"
@@ -21,6 +21,7 @@
     "src/index.ts"
   ],
   "main": "src/index.ts",
+  "typings": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hypersoftllc/qc-round.git"
