@@ -18,16 +18,18 @@
   },
   "license": "ISC",
   "files": [
+    "dist/",
     "src/index.ts"
   ],
-  "main": "src/index.ts",
-  "typings": "src/index.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hypersoftllc/qc-round.git"
   },
   "scripts": {
     "build": "tsc",
+    "prepublish": "tsc",
     "test": "jest --color --coverage",
     "travisci": "npm test"
   },
