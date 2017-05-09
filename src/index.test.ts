@@ -107,6 +107,10 @@ describe('qc-round', () => {
       expect(round(Number.POSITIVE_INFINITY, 1.2)).toBe(Number.POSITIVE_INFINITY);
     });
 
+    it('called with `Number.NaN` and `-Infinity` should return `Number.NaN`', () => {
+      expect(round(Number.NaN, -Infinity)).toEqual(Number.NaN);
+    });
+
     it('called with `Number.NEGATIVE_INFINITY` and `-Infinity` should return `Number.NEGATIVE_INFINITY`', () => {
       expect(round(Number.NEGATIVE_INFINITY, -Infinity)).toBe(Number.NEGATIVE_INFINITY);
     });
@@ -119,6 +123,26 @@ describe('qc-round', () => {
       expect(round(Number.POSITIVE_INFINITY, -Infinity)).toBe(Number.POSITIVE_INFINITY);
     });
 
+    it('called with `Number.NaN` and `-2` should return `Number.NaN`', () => {
+      expect(round(Number.NaN, -2)).toEqual(Number.NaN);
+    });
+
+    it('called with `Number.NEGATIVE_INFINITY` and `-2` should return `Number.NEGATIVE_INFINITY`', () => {
+      expect(round(Number.NEGATIVE_INFINITY, -2)).toBe(Number.NEGATIVE_INFINITY);
+    });
+
+    it('called with `Infinity` and `-2` should return `Infinity`', () => {
+      expect(round(Infinity, -2)).toBe(Infinity);
+    });
+
+    it('called with `Number.POSITIVE_INFINITY` and `-2` should return `Number.POSITIVE_INFINITY`', () => {
+      expect(round(Number.POSITIVE_INFINITY, -2)).toBe(Number.POSITIVE_INFINITY);
+    });
+
+    it('called with `Number.NaN` and `0` should return `Number.NaN`', () => {
+      expect(round(Number.NaN, 0)).toEqual(Number.NaN);
+    });
+
     it('called with `Number.NEGATIVE_INFINITY` and `0` should return `Number.NEGATIVE_INFINITY`', () => {
       expect(round(Number.NEGATIVE_INFINITY, 0)).toBe(Number.NEGATIVE_INFINITY);
     });
@@ -129,6 +153,26 @@ describe('qc-round', () => {
 
     it('called with `Number.POSITIVE_INFINITY` and `0` should return `Number.POSITIVE_INFINITY`', () => {
       expect(round(Number.POSITIVE_INFINITY, 0)).toBe(Number.POSITIVE_INFINITY);
+    });
+
+    it('called with `Number.NaN` and `2` should return `Number.NaN`', () => {
+      expect(round(Number.NaN, 2)).toEqual(Number.NaN);
+    });
+
+    it('called with `Number.NEGATIVE_INFINITY` and `2` should return `Number.NEGATIVE_INFINITY`', () => {
+      expect(round(Number.NEGATIVE_INFINITY, 2)).toBe(Number.NEGATIVE_INFINITY);
+    });
+
+    it('called with `Infinity` and `2` should return `Infinity`', () => {
+      expect(round(Infinity, 2)).toBe(Infinity);
+    });
+
+    it('called with `Number.POSITIVE_INFINITY` and `2` should return `Number.POSITIVE_INFINITY`', () => {
+      expect(round(Number.POSITIVE_INFINITY, 2)).toBe(Number.POSITIVE_INFINITY);
+    });
+
+    it('called with `Number.NaN` and `Infinity` should return `Number.NaN`', () => {
+      expect(round(Number.NaN, Infinity)).toEqual(Number.NaN);
     });
 
     it('called with `Number.NEGATIVE_INFINITY` and `Infinity` should return `Number.NEGATIVE_INFINITY`', () => {

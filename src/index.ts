@@ -19,7 +19,7 @@ const ROUND: string = 'round';
 function _decimalAdjust(type: string, value: any, exp: number): any {
   let val: string, vals: string[];
 
-  if (typeof value !== 'number') {
+  if (typeof value !== 'number' || value != value || value === Number.POSITIVE_INFINITY || value === Number.NEGATIVE_INFINITY) {
     return value;
   }
   value = +value;
