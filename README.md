@@ -59,6 +59,6 @@ round(1234.5678, 4);    // 0
 [license-image]: http://img.shields.io/npm/l/qc-round.svg
 [license-url]: LICENSE
 [package-url]: https://npmjs.org/package/qc-round
-[npm-badge-png]: https://nodei.co/npm/qc-to_bool.png?downloads=true&stars=true
+[npm-badge-png]: https://nodei.co/npm/qc-round.png?downloads=true&stars=true
 [travis-svg]: https://travis-ci.org/hypersoftllc/qc-round.svg?branch=master
 [travis-url]: https://travis-ci.org/hypersoftllc/qc-round
