@@ -1,6 +1,7 @@
 # qc-round
 
 [![Build Status][travis-svg]][travis-url]
+[![Coverage Status][coverage-image]][coverage-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
 
@@ -51,6 +52,8 @@ round(1234.5678, 4);    // 0
 ```
 
 
+[coverage-image]: https://coveralls.io/repos/github/hypersoftllc/qc-round/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/github/hypersoftllc/qc-round?branch=master
 [downloads-image]: http://img.shields.io/npm/dm/qc-round.svg
 [downloads-url]: http://npm-stat.com/charts.html?package=qc-round
 [license-image]: http://img.shields.io/npm/l/qc-round.svg
