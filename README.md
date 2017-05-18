@@ -28,6 +28,29 @@ npm install --save qc-round
   - E.g., `Math.round(1.005 * 100) / 100` returns `1` instead of `1.01`.
 
 
+## Example Usage
+
+```js
+import { round } from 'qc-round';
+
+round(20.49);           // 20
+round(20.5);            // 21
+round(-20.5);           // -20
+round(-20.51);          // -21
+round(1234.5678, -5);   // 1234.5678
+round(1234.5678, -4);   // 1234.5678
+round(1234.5678, -3);   // 1234.568
+round(1234.5678, -2);   // 1234.57
+round(1234.5678, -1);   // 1234.6
+round(1234.5678, 0);    // 1235
+round(1234.5678);       // 1235
+round(1234.5678, 1);    // 1230
+round(1234.5678, 2);    // 1200
+round(1234.5678, 3);    // 1000
+round(1234.5678, 4);    // 0
+```
+
+
 [downloads-image]: http://img.shields.io/npm/dm/qc-round.svg
 [downloads-url]: http://npm-stat.com/charts.html?package=qc-round
 [license-image]: http://img.shields.io/npm/l/qc-round.svg
