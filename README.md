@@ -4,6 +4,8 @@
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
 
+[![npm badge][npm-badge-png]][package-url]
+
 Rounds a number to a specified number of decimal places.
 
 
@@ -30,5 +32,7 @@ npm install --save qc-round
 [downloads-url]: http://npm-stat.com/charts.html?package=qc-round
 [license-image]: http://img.shields.io/npm/l/qc-round.svg
 [license-url]: LICENSE
+[package-url]: https://npmjs.org/package/qc-round
+[npm-badge-png]: https://nodei.co/npm/qc-to_bool.png?downloads=true&stars=true
 [travis-svg]: https://travis-ci.org/hypersoftllc/qc-round.svg?branch=master
 [travis-url]: https://travis-ci.org/hypersoftllc/qc-round
