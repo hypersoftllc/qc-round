@@ -1,6 +1,7 @@
 # qc-round
 
 [![Build Status][travis-svg]][travis-url]
+[![License][license-image]][license-url]
 
 Rounds a number to a specified number of decimal places.
 
@@ -23,6 +24,7 @@ npm install --save qc-round
   does not return the correct value.
   - E.g., `Math.round(1.005 * 100) / 100` returns `1` instead of `1.01`.
 
-
+[license-image]: http://img.shields.io/npm/l/qc-round.svg
+[license-url]: LICENSE
 [travis-svg]: https://travis-ci.org/hypersoftllc/qc-round.svg?branch=master
 [travis-url]: https://travis-ci.org/hypersoftllc/qc-round
