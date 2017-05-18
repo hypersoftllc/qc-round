@@ -1,6 +1,6 @@
 # qc-round
 
-[![Build Status](https://travis-ci.org/hypersoftllc/qc-round.svg?branch=master)](https://travis-ci.org/hypersoftllc/qc-round)
+[![Build Status][travis-svg]][travis-url]
 
 Rounds a number to a specified number of decimal places.
 
@@ -22,3 +22,7 @@ npm install --save qc-round
 * Due to the underlying floating point number representation, using the simulated examples above with certain values
   does not return the correct value.
   - E.g., `Math.round(1.005 * 100) / 100` returns `1` instead of `1.01`.
+
+
+[travis-svg]: https://travis-ci.org/hypersoftllc/qc-round.svg?branch=master
+[travis-url]: https://travis-ci.org/hypersoftllc/qc-round
