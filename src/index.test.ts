@@ -55,6 +55,24 @@ describe('qc-round', () => {
       expect(round(undefined)).toBeUndefined();
     });
 
+    it('called with a non-integral first argument should return the first argument', () => {
+      let input;
+
+      input = [];
+      expect(round(input)).toBe(input);
+
+      expect(round(true)).toBe(true);
+      expect(round(false)).toBe(false);
+
+      input = new Date();
+      expect(round(input)).toBe(input);
+
+      input = {};
+      expect(round(input)).toBe(input);
+
+      expect(round('')).toBe('');
+    });
+
     it('called with a single number argument should return the first argument', () => {
       expect(round(Number.NEGATIVE_INFINITY)).toBe(Number.NEGATIVE_INFINITY);
       expect(round(-Number.MAX_VALUE)).toBe(-Number.MAX_VALUE);
