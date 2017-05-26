@@ -10,12 +10,12 @@ describe('qc-round', () => {
     });
 
     it('called with various values should return expected value', () => {
-      expect(round(-2.6)).toBe(-2.6);
-      expect(round(-2.5)).toBe(-2.5);
-      expect(round(-1.2)).toBe(-1.2);
-      expect(round(1.2)).toBe(1.2);
-      expect(round(2.5)).toBe(2.5);
-      expect(round(2.6)).toBe(2.6);
+      expect(round(-2.6)).toBe(-3);
+      expect(round(-2.5)).toBe(-2);
+      expect(round(-1.2)).toBe(-1);
+      expect(round(1.2)).toBe(1);
+      expect(round(2.5)).toBe(3);
+      expect(round(2.6)).toBe(3);
 
       expect(round(0, 1)).toBe(0);
       expect(round(0, 0)).toBe(0);
@@ -28,7 +28,7 @@ describe('qc-round', () => {
       expect(round(1.005, -1)).toBe(1);
       expect(round(1.005, -2)).toBe(1.01);
       expect(round(1.005, -3)).toBe(1.005);
-      expect(round(1.005)).toBe(1.005);
+      expect(round(1.005)).toBe(1);
 
       expect(round(1234.5678, 5)).toBe(0);
       expect(round(1234.5678, 4)).toBe(0);
@@ -41,7 +41,7 @@ describe('qc-round', () => {
       expect(round(1234.5678, -3)).toBe(1234.568);
       expect(round(1234.5678, -4)).toBe(1234.5678);
       expect(round(1234.5678, -5)).toBe(1234.5678);
-      expect(round(1234.5678)).toBe(1234.5678);
+      expect(round(1234.5678)).toBe(1235);
 
       // Use a value that contains an 'e' when toString is called on it. This ensures a branch in the code is covered.
       expect(round(1.23e81, 10)).toBe(1.23e81);
@@ -55,14 +55,32 @@ describe('qc-round', () => {
       expect(round(undefined)).toBeUndefined();
     });
 
+    it('called with a non-integral first argument should return the first argument', () => {
+      let input;
+
+      input = [];
+      expect(round(input)).toBe(input);
+
+      expect(round(true)).toBe(true);
+      expect(round(false)).toBe(false);
+
+      input = new Date();
+      expect(round(input)).toBe(input);
+
+      input = {};
+      expect(round(input)).toBe(input);
+
+      expect(round('')).toBe('');
+    });
+
     it('called with a single number argument should return the first argument', () => {
       expect(round(Number.NEGATIVE_INFINITY)).toBe(Number.NEGATIVE_INFINITY);
       expect(round(-Number.MAX_VALUE)).toBe(-Number.MAX_VALUE);
-      expect(round(-Number.MIN_VALUE)).toBe(-Number.MIN_VALUE);
+      expect(round(-Number.MIN_VALUE)).toBe(0);
       expect(round(0)).toBe(0);
       expect(round(0.0)).toBe(0);
-      expect(round(Number.MIN_VALUE)).toBe(Number.MIN_VALUE);
-      expect(round(1234.5678)).toBe(1234.5678);
+      expect(round(Number.MIN_VALUE)).toBe(0);
+      expect(round(1234.5678)).toBe(1235);
       expect(round(Number.MAX_VALUE)).toBe(Number.MAX_VALUE);
       expect(round(Infinity)).toBe(Infinity);
       expect(round(Number.POSITIVE_INFINITY)).toBe(Number.POSITIVE_INFINITY);
@@ -71,11 +89,11 @@ describe('qc-round', () => {
     it('called with an `undefined` second argument should return the first argument', () => {
       expect(round(Number.NEGATIVE_INFINITY, undefined)).toBe(Number.NEGATIVE_INFINITY);
       expect(round(-Number.MAX_VALUE, undefined)).toBe(-Number.MAX_VALUE);
-      expect(round(-Number.MIN_VALUE, undefined)).toBe(-Number.MIN_VALUE);
+      expect(round(-Number.MIN_VALUE, undefined)).toBe(0);
       expect(round(0, undefined)).toBe(0);
       expect(round(0.0, undefined)).toBe(0);
-      expect(round(Number.MIN_VALUE, undefined)).toBe(Number.MIN_VALUE);
-      expect(round(1234.5678, undefined)).toBe(1234.5678);
+      expect(round(Number.MIN_VALUE, undefined)).toBe(0);
+      expect(round(1234.5678, undefined)).toBe(1235);
       expect(round(Number.MAX_VALUE, undefined)).toBe(Number.MAX_VALUE);
       expect(round(Infinity, undefined)).toBe(Infinity);
       expect(round(Number.POSITIVE_INFINITY, undefined)).toBe(Number.POSITIVE_INFINITY);

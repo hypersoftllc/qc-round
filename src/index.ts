@@ -10,7 +10,8 @@ const ROUND: string = 'round';
  *
  * @private
  *
- * @param {string} type - The type of adjustment.  Must be one of `'ceil'`, `'floor'`,  or `'round'`.
+ * @param {string} type - The type of adjustment.  Must be one of `'ceil'`,
+ *   `'floor'`,  or `'round'`.
  * @param {number} value - The number.
  * @param {number} exp - The exponent (the 10 logarithm of the adjustment base).
  *
@@ -22,18 +23,15 @@ function _decimalAdjust(type: string, value: any, exp: number): any {
   if (typeof value !== 'number' || value != value || value === Number.POSITIVE_INFINITY || value === Number.NEGATIVE_INFINITY) {
     return value;
   }
-  value = +value;
-
   if (typeof exp !== 'number' || exp != exp || exp === Number.POSITIVE_INFINITY || exp === Number.NEGATIVE_INFINITY) {
     return value;
-  }
-  exp = +exp;
-  if (exp === 0) {
-    return (<any>Math)[type](value);
   }
   // If the exp is not an integer...
   if (exp % 1 !== 0) {
     return value;
+  }
+  if (exp === 0) {
+    return (<any>Math)[type](value) + 0; // The + 0 forces -0 to 0.
   }
 
   // Shift
@@ -44,39 +42,44 @@ function _decimalAdjust(type: string, value: any, exp: number): any {
   // Shift back
   val = value.toString();
   vals = val.split('e');
-  return +(`${vals[0]}e${(vals[1] ? +vals[1] + exp : exp)}`);
+  return +(`${vals[0]}e${(vals[1] ? +vals[1] + exp : exp)}`) + 0; // The + 0 forces -0 to 0.
 }
 
 
 // ==========================================================================
 /**
- * Similar to `Math.round` but is capable of rounding to different decimal places.  `Math.round` will only round a
- * number to the nearest integer which is effectively rounding to zero decimal places.
+ * Similar to `Math.round` but is capable of rounding to different decimal
+ * places.  `Math.round` will only round a number to the nearest integer which
+ * is effectively rounding to zero decimal places.
  *
- *     round(20.49); // 20
- *     round(20.5); // 21
- *     round(-20.5); // -20
- *     round(-20.51); // -21
- *     Math.round(1.005 * 100)/100; // 1.  Due to inaccurate floating point arithmetic, this rounds incorrectly.
- *     round(1.005, -2) // 1.01.  But this doesn't.
- *     round(1234.5678, -5) // 1234.5678
- *     round(1234.5678, -4) // 1234.5678
- *     round(1234.5678, -3) // 1234.568
- *     round(1234.5678, -2) // 1234.57
- *     round(1234.5678, -1) // 1234.6
- *     round(1234.5678, 0) // 1235
- *     round(1234.5678) // 1235
- *     round(1234.5678, 1) // 1230
- *     round(1234.5678, 2) // 1200
- *     round(1234.5678, 3) // 1000
- *     round(1234.5678, 4) // 0
+ * ```
+ * round(20.49);                 // 20
+ * round(20.5);                  // 21
+ * round(-20.5);                 // -20
+ * round(-20.51);                // -21
+ * Math.round(1.005 * 100)/100;  // 1.  Due to inaccurate floating point
+ *                               // arithmetic, this rounds incorrectly.
+ * round(1.005, -2)              // 1.01.  But this doesn't.
+ * round(1234.5678, -5)          // 1234.5678
+ * round(1234.5678, -4)          // 1234.5678
+ * round(1234.5678, -3)          // 1234.568
+ * round(1234.5678, -2)          // 1234.57
+ * round(1234.5678, -1)          // 1234.6
+ * round(1234.5678, 0)           // 1235
+ * round(1234.5678)              // 1235
+ * round(1234.5678, 1)           // 1230
+ * round(1234.5678, 2)           // 1200
+ * round(1234.5678, 3)           // 1000
+ * round(1234.5678, 4)           // 0
+ * ```
  *
  * @param {number} value - The number.
- * @param {number} [exp=0] - The exponent (the 10 logarithm of the adjustment base).  May be positive or negative.
+ * @param {number} [exp=0] - The exponent (the 10 logarithm of the adjustment
+ *   base).  May be positive or negative.  Must be an integer.
  *
  * @returns {number} The rounded value.
  */
-function round(value?: any, exp?: number): any {
+function round(value?: any, exp: number = 0): any {
   return _decimalAdjust(ROUND, value, exp);
 }
 
