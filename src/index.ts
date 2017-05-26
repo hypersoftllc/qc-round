@@ -23,18 +23,15 @@ function _decimalAdjust(type: string, value: any, exp: number): any {
   if (typeof value !== 'number' || value != value || value === Number.POSITIVE_INFINITY || value === Number.NEGATIVE_INFINITY) {
     return value;
   }
-  value = +value;
-
   if (typeof exp !== 'number' || exp != exp || exp === Number.POSITIVE_INFINITY || exp === Number.NEGATIVE_INFINITY) {
     return value;
-  }
-  exp = +exp;
-  if (exp === 0) {
-    return (<any>Math)[type](value);
   }
   // If the exp is not an integer...
   if (exp % 1 !== 0) {
     return value;
+  }
+  if (exp === 0) {
+    return (<any>Math)[type](value) + 0; // The + 0 forces -0 to 0.
   }
 
   // Shift
@@ -45,7 +42,7 @@ function _decimalAdjust(type: string, value: any, exp: number): any {
   // Shift back
   val = value.toString();
   vals = val.split('e');
-  return +(`${vals[0]}e${(vals[1] ? +vals[1] + exp : exp)}`);
+  return +(`${vals[0]}e${(vals[1] ? +vals[1] + exp : exp)}`) + 0; // The + 0 forces -0 to 0.
 }
 
 
@@ -82,7 +79,7 @@ function _decimalAdjust(type: string, value: any, exp: number): any {
  *
  * @returns {number} The rounded value.
  */
-function round(value?: any, exp?: number): any {
+function round(value?: any, exp: number = 0): any {
   return _decimalAdjust(ROUND, value, exp);
 }
 

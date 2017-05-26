@@ -33,6 +33,11 @@ npm install --save qc-round
 
   - E.g., `Math.round(1.005 * 100) / 100` returns `1` instead of `1.01`.
 
+* Will not ever return `-0`.
+
+  - E.g., `Math.round(-0)` returns `-0` instead of `0`.
+
+  - E.g., `Math.round(-Number.MIN_VALUE)` returns `-0` instead of `0`.
 
 ## Example Usage
 
